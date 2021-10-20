@@ -43,3 +43,7 @@ main{
     border-left: 6px solid rgb(0, 185, 170); 
     color: white;
 }
+
+.bomb{
+    background-color: red;
+}
