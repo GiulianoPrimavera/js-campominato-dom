@@ -13,8 +13,12 @@
 
 
 
+
+
 /**
- * 
+ * funzione che genera un certo numero di numeri random sulla base 
+ * del numero massimo e minimo che gli viene dato, questi due valori definiscono
+ * il range dei numeri random che vengono generati 
  * @param {number} max - rappresenta il numero massimo che il random può raggiungere 
  * @param {number} min - rappresenta il numero minimo che il random può raggiungere
  */
