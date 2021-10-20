@@ -16,6 +16,10 @@ startGame.addEventListener("click", function(){
     //genero le scatole
     boxesGenerator(totalBoxes);
 
+    //le mine vengono posizionate nella griglia di gioco
+    bombsGenerator(totalBoxes);
+    
+
 });
 
 //con questa funzione tengo conto del numero di quadrati da creare
