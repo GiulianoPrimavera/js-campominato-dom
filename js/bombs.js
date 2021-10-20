@@ -10,3 +10,15 @@
     -usando un contatore conto se l'utente ha cliccato n volte(numero massimo di caselle) meno 16 (numero di bombe)
 -alla fine devo scoprire tutte le mine e dare un punteggio al giocatore (basato sul contatore di prima)
 */
+
+
+
+/**
+ * 
+ * @param {number} max - rappresenta il numero massimo che il random può raggiungere 
+ * @param {number} min - rappresenta il numero minimo che il random può raggiungere
+ */
+
+function getRandomNumber(max, min)                                  
+const numeriRandom = Math.floor(Math.random() * (max - min + 1) + min);
+
