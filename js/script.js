@@ -46,6 +46,11 @@ function getNBoxes(value){
 
 
 //devo generare le boxes
+/**
+ * 
+ * @param {number} value -> è il numero totale di celle 
+ * 
+ */
 function boxesGenerator (value){
 
     mainContainer.innerHTML = "";
@@ -59,9 +64,15 @@ function boxesGenerator (value){
         boxN.innerHTML += `<p class="user_select_none">${i}</p>`
         boxN.style.width =  boxDimension + "%";
         boxN.style.height = boxDimension + "%"; 
-        //qui ci devi mettere il listener al click della box (se non lo metti qua)
+        
+        
+        //quando clicco su una scatola la scatola cambia aspetto
+        //se la scatola su cui ho cliccato è una bomba, ha un aspetto diverso (e faccio finire il gioco)
         boxN.addEventListener("click", function(){
-            this.classList.toggle("clicked")
+            this.classList.add("clicked")
+            if(arrayBombs.includes(i)){
+                this.classList.add("bomb");
+            }
         })        
         
         mainContainer.append(boxN);

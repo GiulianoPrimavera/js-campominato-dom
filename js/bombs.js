@@ -1,6 +1,7 @@
 /*
--devo generare 16 numeri casuali tra 1 e (numero massimo di caselle) -> che si basa sul livello di difficoltà del gioco
--la lista di numeri (un array) non può contenere dei doppioni
+//-devo generare 16 numeri casuali tra 1 e (numero massimo di caselle) -> che si basa sul livello di difficoltà del gioco
+//-la lista di numeri (un array) non può contenere dei doppioni
+
 
 -quando l'utente clicca su una cella
     -controlliamo se la cella su cui ha cliccato è presente nella lista delle bombe (generate prima in maniera randomica)
@@ -15,7 +16,7 @@
 let arrayBombs = [];
 /**
  * questa funzione popola l'array arrayBombs finchè non contiene 16 numeri diversi
- * @param {*} livello -> è il numero di caselle della griglia di gioco, cambia a seconda del livello scelto 
+ * @param {number} livello -> è il numero di caselle della griglia di gioco, cambia a seconda del livello scelto 
  */
 function bombsGenerator (livello){
 //creo il ciclo per generare i numeri random (sulla base del livello)
