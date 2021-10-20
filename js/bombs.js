@@ -23,6 +23,9 @@
  * @param {number} min - rappresenta il numero minimo che il random può raggiungere
  */
 
-function getRandomNumber(max, min)                                  
-const numeriRandom = Math.floor(Math.random() * (max - min + 1) + min);
+function getRandomNumber(max, min){
+    const numeriRandom = Math.floor(Math.random() * (max - min + 1) + min);
+
+    return numeriRandom;
+}                           
 
