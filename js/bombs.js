@@ -11,6 +11,29 @@
 -alla fine devo scoprire tutte le mine e dare un punteggio al giocatore (basato sul contatore di prima)
 */
 
+//definisco l'array
+let arrayBombs = [];
+
+//creo il ciclo per generare i numeri random (sulla base del livello)
+//eseguo il push del numero random finché l'array non conterrà 16 numeri
+let nVolte = 0; //questa variabile mi serve per vedere quante volte viene eseguito il ciclo
+while (arrayBombs.length < 16){
+    //                           questo valore va sostituito   
+    bombRandom = getRandomNumber(81, 1);
+    
+    //controllo se il numero è già presente nell'array arrayBombs
+    if(arrayBombs.includes(bombRandom)){
+        //se il numero random generato è già presente nell'array non succede niente 
+        //il numero non viene pushato, l'array rimane statico
+    }else{
+        //se il numero non è presente nell'array lo pusho nell'array
+        //l'array.length cresce di 1
+        arrayBombs.push(bombRandom);
+    }
+
+    nVolte++
+}
+console.log(arrayBombs, `l'array continene ${arrayBombs.length} nuemeri, il ciclo è stato eseguito ${nVolte} volte`);
 
 
 
@@ -19,13 +42,14 @@
  * funzione che genera un certo numero di numeri random sulla base 
  * del numero massimo e minimo che gli viene dato, questi due valori definiscono
  * il range dei numeri random che vengono generati 
- * @param {number} max - rappresenta il numero massimo che il random può raggiungere 
  * @param {number} min - rappresenta il numero minimo che il random può raggiungere
+ * @param {number} max - rappresenta il numero massimo che il random può raggiungere 
+ * @returns {number} numeriRandom
  */
 
-function getRandomNumber(max, min){
-    const numeriRandom = Math.floor(Math.random() * (max - min + 1) + min);
+function getRandomNumber(min, max){
+    const numeroRandom = Math.floor(Math.random() * (max - min + 1) + min);
 
-    return numeriRandom;
+    return numeroRandom;
 }                           
 
