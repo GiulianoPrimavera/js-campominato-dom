@@ -23,7 +23,7 @@ function bombsGenerator (livello){
 //eseguo il push del numero random finché l'array non conterrà 16 numeri
 let nVolte = 0; //questa variabile mi serve per vedere quante volte viene eseguito il ciclo
 while (arrayBombs.length < 16){
-    //                           questo valore va sostituito   
+       
     bombRandom = getRandomNumber(livello, 1);
     
     //controllo se il numero è già presente nell'array arrayBombs
@@ -52,7 +52,7 @@ console.log(arrayBombs, `l'array continene ${arrayBombs.length} nuemeri, il cicl
  * @returns {number} numeriRandom
  */
 
-function getRandomNumber(min, max){
+function getRandomNumber(max, min ){
     const numeroRandom = Math.floor(Math.random() * (max - min + 1) + min);
 
     return numeroRandom;

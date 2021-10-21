@@ -17,10 +17,11 @@ startGame.addEventListener("click", function(){
     boxesGenerator(totalBoxes);
 
     //le mine vengono posizionate nella griglia di gioco
+    arrayBombs = [];
     bombsGenerator(totalBoxes);
-    
 
 });
+
 
 //con questa funzione tengo conto del numero di quadrati da creare
 function getNBoxes(value){
@@ -54,6 +55,7 @@ function getNBoxes(value){
 function boxesGenerator (value){
 
     mainContainer.innerHTML = "";
+    
 
     const percentWidth = Math.sqrt(value);
     const boxDimension = 100 / percentWidth;
@@ -67,9 +69,9 @@ function boxesGenerator (value){
         
         
         //quando clicco su una scatola la scatola cambia aspetto
-        //se la scatola su cui ho cliccato è una bomba, ha un aspetto diverso (e faccio finire il gioco)
         boxN.addEventListener("click", function(){
             this.classList.add("clicked")
+            //se la scatola su cui ho cliccato è una bomba, ha un aspetto diverso (e faccio finire il gioco)
             if(arrayBombs.includes(i)){
                 this.classList.add("bomb");
             }
@@ -77,6 +79,5 @@ function boxesGenerator (value){
         
         mainContainer.append(boxN);
     }
-
 }
 
