@@ -47,6 +47,7 @@ function getNBoxes(value){
     
 }
 
+let punteggio = 0;
 //devo generare le boxes
 /**
  * 
@@ -56,8 +57,8 @@ function getNBoxes(value){
 function boxesGenerator (value){
     
     mainContainer.innerHTML = "";
-    let punteggio = 0;
-    
+ /* let punteggio = document.querySelectorAll(".clicked").length;
+ */   //una soluzione consigliata in classe (da ragionarci su)
 
     const percentWidth = Math.sqrt(value);
     const boxDimension = 100 / percentWidth;
@@ -72,11 +73,12 @@ function boxesGenerator (value){
         
         //quando clicco su una scatola la scatola cambia aspetto
         boxN.addEventListener("click", function(){
-            this.classList.add("clicked")
             //se la scatola su cui ho cliccato è una bomba, ha un aspetto diverso (e faccio finire il gioco)
             if(arrayBombs.includes(i)){
                 this.classList.add("bomb");
                 punteggio--
+            }else{
+                this.classList.add("clicked")
             }
             punteggio++
             console.log("il punteggio", punteggio)
@@ -86,4 +88,18 @@ function boxesGenerator (value){
         mainContainer.append(boxN);
     }
 }
+
+/* devo crere una funzione che :
+-mi recupera tutte le boxes (querySelectorAll)
+-ciclare (con un for) sull'array delle bombe (così ciclo solo 16 volte)
+-recuperrare ogni bomba                      
+*/
+/* function showBombs (){
+    const cellList  = mainContainer.querySelectorAll(".box")
+    for (let i = 0; i < array.length; i++) {
+        const bomba = arrayBombs[i];
+        
+        
+    }
+} */
 
