@@ -74,12 +74,15 @@ function boxesGenerator (value){
             //se la scatola su cui ho cliccato è una bomba, ha un aspetto diverso (e faccio finire il gioco)
             if(arrayBombs.includes(i)){
                 this.classList.add("bomb");
-                punteggio--
+                
+            }else if (boxN.classList.contains("clicked")){
+                console.log("il punteggio", punteggio)
             }else{
                 this.classList.add("clicked")
+                punteggio++
+                console.log("il punteggio", punteggio)
+
             }
-            punteggio++
-            console.log("il punteggio", punteggio)
             //devo "appendere" il punteggio nel html
         })        
         
