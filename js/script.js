@@ -47,7 +47,7 @@ function getNBoxes(value){
     
 }
 
-
+let punteggio = 0;
 //devo generare le boxes
 /**
  * 
@@ -76,7 +76,11 @@ function boxesGenerator (value){
             //se la scatola su cui ho cliccato è una bomba, ha un aspetto diverso (e faccio finire il gioco)
             if(arrayBombs.includes(i)){
                 this.classList.add("bomb");
+                punteggio--
             }
+            punteggio++
+            console.log("il punteggio", punteggio)
+            //devo "appendere" il punteggio nel html
         })        
         
         mainContainer.append(boxN);
