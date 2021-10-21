@@ -17,6 +17,8 @@ startGame.addEventListener("click", function(){
     boxesGenerator(totalBoxes);
 
     //le mine vengono posizionate nella griglia di gioco
+    //svuoto l'array mombe ogni volta che si clicca sul bottone startGame
+    //così che al cambio di difficoltà del gioco le bombe si troveranno in posizione diversa
     arrayBombs = [];
     bombsGenerator(totalBoxes);
 
