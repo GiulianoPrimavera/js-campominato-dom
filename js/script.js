@@ -47,7 +47,6 @@ function getNBoxes(value){
     
 }
 
-let punteggio = 0;
 //devo generare le boxes
 /**
  * 
@@ -55,8 +54,9 @@ let punteggio = 0;
  * 
  */
 function boxesGenerator (value){
-
+    
     mainContainer.innerHTML = "";
+    let punteggio = 0;
     
 
     const percentWidth = Math.sqrt(value);
