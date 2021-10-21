@@ -57,8 +57,6 @@ let punteggio = 0;
 function boxesGenerator (value){
     
     mainContainer.innerHTML = "";
- /* let punteggio = document.querySelectorAll(".clicked").length;
- */   //una soluzione consigliata in classe (da ragionarci su)
 
     const percentWidth = Math.sqrt(value);
     const boxDimension = 100 / percentWidth;
