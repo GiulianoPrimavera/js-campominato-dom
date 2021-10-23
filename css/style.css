@@ -9,6 +9,7 @@ main{
     width: 100%;
     height: calc(100vh - 100px);
     padding: 50px;
+    position: relative;
 }
 .menu_section{
     height: 100px;
@@ -46,4 +47,10 @@ main{
 
 .bomb{
     background-color: red;
+}
+
+.punteggio{
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }

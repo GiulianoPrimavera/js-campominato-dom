@@ -1,6 +1,7 @@
 const startGame = document.getElementById("start_game");
 const difficultyOption = document.getElementById("difficulty_option");
 const mainContainer = document.getElementById("main_container");
+const contatorePunteggio = document.querySelector(".punteggio");
 
 //al click del bottone "invia" devo leggere il valore del livello di difficoltà del select
 startGame.addEventListener("click", function(){
@@ -71,6 +72,7 @@ function boxesGenerator (value){
         
         //quando clicco su una scatola la scatola cambia aspetto
         boxN.addEventListener("click", function(){
+            contatorePunteggio.innerHTML = ``
             //se la scatola su cui ho cliccato è una bomba, ha un aspetto diverso (e faccio finire il gioco)
             if(arrayBombs.includes(i)){
                 this.classList.add("bomb");
@@ -84,9 +86,12 @@ function boxesGenerator (value){
 
             }
             //devo "appendere" il punteggio nel html
+            contatorePunteggio.innerHTML += `punteggio ${punteggio}`
+            
         })        
-        
+
         mainContainer.append(boxN);
+
     }
 }
 
