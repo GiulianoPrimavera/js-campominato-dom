@@ -4,7 +4,7 @@ const mainContainer = document.getElementById("main_container");
 const contatorePunteggio = document.querySelector(".punteggio");
 
 //al click del bottone "invia" devo leggere il valore del livello di difficoltà del select
-startGame.addEventListener("click", function(){
+startGame.addEventListener("click", function () {
     //leggo il valore che si trova nell'opzione scelta dall'utente e lo assegno a una variabile
     const difficultyLevel = difficultyOption.value;
 
@@ -27,25 +27,25 @@ startGame.addEventListener("click", function(){
 
 
 //con questa funzione tengo conto del numero di quadrati da creare
-function getNBoxes(value){
+function getNBoxes(value) {
     //creo una variabile che tenga conto del numero di quadrati da creare in base al livello di difficoltà
     let nBoxes;
-    
+
     //assegno alla variabile nBoxes il numero di scatole che voglio creare
-    if(value === "1"){
+    if (value === "1") {
         //assegno alla variabile "nBoxes" il valore 49
         nBoxes = 49;
-    }else if(value === "2"){
+    } else if (value === "2") {
         //assegno alla variabile "nBoxes" il valore 81
-        nBoxes = 81;     
-    }else if(value === "3"){
+        nBoxes = 81;
+    } else if (value === "3") {
         //assegno alla variabile "nBoxes" il valore 100
         nBoxes = 100;
     }
-    
+
 
     return nBoxes;
-    
+
 }
 
 let punteggio = 0;
@@ -55,40 +55,49 @@ let punteggio = 0;
  * @param {number} value -> è il numero totale di celle 
  * 
  */
-function boxesGenerator (value){
-    
+function boxesGenerator(value) {
+
     mainContainer.innerHTML = "";
 
     const percentWidth = Math.sqrt(value);
     const boxDimension = 100 / percentWidth;
-    
-    for (let i = 1; i <= value; i++){
+
+    for (let i = 1; i <= value; i++) {
         const boxN = document.createElement("div");
         boxN.classList.add("box");
         boxN.innerHTML += `<p class="user_select_none">${i}</p>`
-        boxN.style.width =  boxDimension + "%";
-        boxN.style.height = boxDimension + "%"; 
-        
-        
+        boxN.style.width = boxDimension + "%";
+        boxN.style.height = boxDimension + "%";
+
+
         //quando clicco su una scatola la scatola cambia aspetto
-        boxN.addEventListener("click", function(){
+        boxN.addEventListener("click", function () {
+            //azzero il punteggio per sostituirlo con quello nuovo alla fine del ciclo
             contatorePunteggio.innerHTML = ``
             //se la scatola su cui ho cliccato è una bomba, ha un aspetto diverso (e faccio finire il gioco)
-            if(arrayBombs.includes(i)){
-                this.classList.add("bomb");
-                
-            }else if (boxN.classList.contains("clicked")){
+            if (arrayBombs.includes(i)) {
+                //mostro le bombe
+                showBombs();
+                mainContainer.innerHTML +=`
+                                            <div class="game_over">
+                                                <h1>
+                                                    HAI PERSO
+                                                </h1>
+                                            </div>
+                    `
+
+            } else if (boxN.classList.contains("clicked")) {
                 console.log("il punteggio", punteggio)
-            }else{
+            } else {
                 this.classList.add("clicked")
                 punteggio++
                 console.log("il punteggio", punteggio)
 
             }
-            //devo "appendere" il punteggio nel html
+            //inserisco il punteggio nell'html 
             contatorePunteggio.innerHTML += `punteggio ${punteggio}`
-            
-        })        
+
+        })
 
         mainContainer.append(boxN);
 
@@ -98,14 +107,21 @@ function boxesGenerator (value){
 /* devo crere una funzione che :
 -mi recupera tutte le boxes (querySelectorAll)
 -ciclare (con un for) sull'array delle bombe (così ciclo solo 16 volte)
--recuperrare ogni bomba                      
+-comparare l'indice delle bombe con l'indice dell'array di tutte le boxes
+    -se sono ugali allora mostro tutte le bombe 
+-mostro la scritta "hai perso"                   
 */
-/* function showBombs (){
-    const cellList  = mainContainer.querySelectorAll(".box")
-    for (let i = 0; i < array.length; i++) {
-        const bomba = arrayBombs[i];
-        
-        
+function showBombs() {
+    //creo un array contenente tutte le boxes della griglia di gioco
+    const arrayBoxes = mainContainer.querySelectorAll(".box")
+    console.log("l'array delle boxes", arrayBoxes);
+
+    //scorro 'array delle bombe
+    for (let i = 0; i < arrayBombs.length; i++) {
+        const bombN = arrayBombs[i];
+
+        const cellaBomba = arrayBoxes[bombN - 1];
+        cellaBomba.classList.add("bomb");
     }
-} */
+}
 
