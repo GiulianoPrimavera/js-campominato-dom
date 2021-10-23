@@ -23,13 +23,18 @@ startGame.addEventListener("click", function () {
     arrayBombs = [];
     bombsGenerator(totalBoxes);
 
+    //mostro il punteggio come 0 all'inizio del gioco
+    contatorePunteggio.innerHTML += `punteggio 0`
+
+    //mostro la scritta della vittoria
+    youWin()
 });
 
 
+let nBoxes;
 //con questa funzione tengo conto del numero di quadrati da creare
 function getNBoxes(value) {
     //creo una variabile che tenga conto del numero di quadrati da creare in base al livello di difficoltà
-    let nBoxes;
 
     //assegno alla variabile nBoxes il numero di scatole che voglio creare
     if (value === "1") {
@@ -48,7 +53,6 @@ function getNBoxes(value) {
 
 }
 
-let punteggio = 0;
 //devo generare le boxes
 /**
  * 
@@ -56,8 +60,13 @@ let punteggio = 0;
  * 
  */
 function boxesGenerator(value) {
-
+    
     mainContainer.innerHTML = "";
+    //azzero il punteggio a ogni inizio del gioco
+    let punteggio = 0;
+    //svuoto il contatore del punteggio e lo rimepo alla fine della funzione
+    contatorePunteggio.innerHTML = "";
+
 
     const percentWidth = Math.sqrt(value);
     const boxDimension = 100 / percentWidth;
@@ -78,7 +87,8 @@ function boxesGenerator(value) {
             if (arrayBombs.includes(i)) {
                 //mostro le bombe
                 showBombs();
-                mainContainer.innerHTML +=`
+                //mostro il messaggio di game over
+                mainContainer.innerHTML += `
                                             <div class="game_over">
                                                 <h1>
                                                     HAI PERSO
@@ -92,7 +102,7 @@ function boxesGenerator(value) {
                 this.classList.add("clicked")
                 punteggio++
                 console.log("il punteggio", punteggio)
-
+                youWin()
             }
             //inserisco il punteggio nell'html 
             contatorePunteggio.innerHTML += `punteggio ${punteggio}`
@@ -125,3 +135,18 @@ function showBombs() {
     }
 }
 
+//se il numero di boxN con classe clicked è === a il numero di boxN totali - il numero di bombe 
+//mostro il messaggio che hai vinto
+function youWin() {
+    let clickedBox = document.querySelectorAll(".clicked");
+    
+    if (clickedBox.length === nBoxes - arrayBombs.length) {
+        mainContainer.innerHTML += `
+                                    <div class="you_win">
+                                        <h1>
+                                            HAI VINTO
+                                        </h1>
+                                    </div>
+        `
+    }
+}
